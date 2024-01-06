@@ -1,0 +1,18 @@
+<ul class="breadcrumb">
+  <li *ngIf="showHome" class="breadcrumb-item header--xs">
+    <a [routerLink]="['/']">
+      Home
+    </a>
+  </li>
+  <li *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb-item header--xs">
+    <a
+      *ngIf="breadcrumb.routerUrl; else noUrl"
+      [routerLink]="[breadcrumb.routerUrl]"
+    >
+      {{ breadcrumb.name }}
+    </a>
+    <ng-template #noUrl>
+      {{ breadcrumb.name }}
+    </ng-template>
+  </li>
+</ul>

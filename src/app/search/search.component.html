@@ -1,0 +1,31 @@
+<div class="contain gutter--vertical padding--horizontal--mobile separator-top">
+  <section class="content-section gutter--vertical">
+    <header class="gutter--vertical">
+      <h1 class="header">Resultados de búsqueda para: {{ searchSlug }}</h1>
+    </header>
+    <form [formGroup]="searchForm" (ngSubmit)="submitSearch()">
+      <div class="searchbar">
+        <button type="submit">
+          <img src="./assets/search.svg" />
+        </button>
+        <input type="text" placeholder="Buscar" formControlName="searchValue" />
+      </div>
+    </form>
+    <app-post-list
+      *ngIf="postsLoaded"
+      [posts]="posts"
+      [type]="'paginated'"
+    ></app-post-list>
+    <app-pagination
+      [hidden]="!postsLoaded || posts.length === 0"
+    ></app-pagination>
+    <app-error-reload
+      *ngIf="postsError.status"
+      (onReload)="postsError.reload()"
+    ></app-error-reload>
+    <app-loader *ngIf="!postsLoaded && !postsError.status"></app-loader>
+  </section>
+  <aside class="content-aside">
+    <app-blocks [amount]="4"></app-blocks>
+  </aside>
+</div>

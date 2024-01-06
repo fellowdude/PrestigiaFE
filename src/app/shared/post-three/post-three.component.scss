@@ -1,0 +1,221 @@
+@import '~src/styles/variables';
+
+app-post-three {
+  .grid-parent,
+  .grid-child {
+    display: flex;
+    .three-big,
+    .three-big > *,
+    .three-small {
+      flex-basis: 100%;
+    }
+  }
+
+  .grid-parent {
+    flex-flow: row wrap;
+  }
+
+  .grid-parent.column {
+    .three-big .card {
+      background-color: $gray-1;
+      .card-body {
+        padding-left: $card-gap;
+        padding-right: $card-gap;
+        padding-bottom: $card-gap;
+
+        .subtitle {
+          font-family: baubodn;
+          /* font-size: $txt-md; */
+          font-size: 1.25rem;
+          line-height: 1.1em;
+        }
+      }
+    }
+  }
+
+  .grid-parent.hero {
+    .three-big {
+      .post-hero-title {
+        font-size: $txt-xl;
+      }
+      .post-hero-subtitle {
+        font-size: $txt-lg;
+      }
+    }
+  }
+
+  .grid-parent.mosaic,
+  .grid-parent.column,
+  .grid-parent.hero {
+    .grid-child {
+      flex-flow: row wrap;
+      align-content: flex-start;
+    }
+    .three-small {
+      > * {
+        flex-basis: 50%;
+      }
+      > *:nth-child(even) {
+        padding-left: #{$card-gap / 2};
+      }
+      > *:nth-child(odd) {
+        padding-right: #{$card-gap / 2};
+      }
+      > *:nth-child(n + 3) {
+        padding-top: $card-gap;
+      }
+      @media (max-width: 1281px) {
+        .title.txt--clip--2{
+          min-height: 2.4em;
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+
+  @mixin card-row {
+    .card {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: flex-start;
+
+      .card-header {
+        flex: 1 0 45%;
+      }
+      .card-body {
+        flex: 1 0 55%;
+      }
+
+      > :first-child {
+        margin-bottom: 0;
+        padding-right: $card-gap;
+      }
+    }
+  }
+
+  /* Larger than tablet */
+  @media (min-width: 1281px) {
+    .grid-parent.hero {
+      .read-more {
+        display: none;
+      }
+      .three-small {
+        .img-content {
+          padding-top: $img-ratio-16-9;
+        }
+      }
+    }
+    .grid-parent.column {
+      @include card-row;
+      &.invert {
+        .three-big .card-body {
+          padding-left: $card-gap !important;
+        }
+        .three-small .card-body {
+          padding-right: $card-gap !important;
+        }
+        .card {
+          flex-direction: row-reverse !important;
+          > :first-child {
+            padding-right: 0 !important;
+          }
+        }
+      }
+      .three-big.grid-child {
+        padding-bottom: $s-md !important;
+      }
+
+      .three-big .card {
+        align-items: stretch;
+        .img-content {
+          height: 100%;
+          padding-right: 100%;
+          padding-top: 70%;
+        }
+        .card-header {
+          flex-basis: 60%;
+        }
+        .card-body {
+          flex-basis: 40%;
+          align-self: flex-end;
+          padding-left: 0;
+          padding-top: $card-gap;
+          .subtitle {
+            font-size: $txt-lg;
+            line-height: 1.2;
+          }
+        }
+      }
+      .three-small {
+        > * {
+          flex-basis: 100%;
+          padding-top: $s-md !important;
+          padding-right: 0 !important;
+          padding-left: 0 !important;
+        }
+        /*> *:not(:first-child) {
+          border-top: 1px solid $gray-2;
+        }*/
+        > *:not(:last-child) {
+          padding-bottom: $s-md;
+        }
+        .card {
+          align-items: stretch;
+          .img-content {
+            padding-top: $img-ratio-16-9;
+            padding-right: 100%;
+            height: 100%;
+          }
+        }
+      }
+      .grid-child {
+        flex-flow: column;
+      }
+    }
+    .grid-parent.mosaic {
+      display: flex;
+      flex-flow: row nowrap;
+
+      .grid-child {
+        margin-right: 0;
+        flex-grow: 1;
+
+        > * {
+          padding-right: 0;
+          flex-basis: 100%;
+        }
+      }
+      .grid-child.three-big {
+        flex-basis: 40%;
+        align-content: stretch;
+        .card,
+        .card-header,
+        .img-content {
+          height: 100%;
+        }
+        .img-content {
+          padding-top: $img-ratio-16-9;
+          padding-right: 100%;
+        }
+        .title {
+          /* font-size: $txt-xxl; */
+          font-size: 3.1rem;
+        }
+      }
+      .grid-child.three-small {
+        flex-basis: 60%;
+        > * {
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 0;
+        }
+        > * + * {
+          padding-top: $card-gap;
+        }
+        .img-content {
+          padding-top: $img-ratio-16-9;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<div class="wrapper" [class.blur]="showBlur">
+  <div>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+</div>
+<app-blur-form
+  [class.show-blur]="showBlur"
+  (blurFormValidated)="showBlur = false"
+></app-blur-form>

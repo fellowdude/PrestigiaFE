@@ -1,0 +1,34 @@
+<div *ngIf="posts.length > 0" class="grid-wrapper grid-lg">
+  <ul class="grid-parent" [ngClass]="type" [class.invert]="invert">
+    <li class="grid-child three-big" [ngSwitch]="type">
+      <app-post-hero
+        *ngSwitchCase="'hero'"
+        [post]="posts[0]"
+        [type]="'inline-small'"
+      ></app-post-hero>
+      <app-post-item
+        *ngSwitchDefault
+        [post]="posts[0]"
+        [showImage]="true"
+        [showSubtitle]="type === 'column'"
+        [showReadMore]="true"
+        [subtitleTruncate]="140"
+      ></app-post-item>
+    </li>
+    <li
+      *ngIf="posts.length > 1"
+      [ngSwitch]="type"
+      class="grid-child three-small"
+    >
+      <app-post-item
+        *ngFor="let post of posts.slice(1, type === 'column' ? 3 : 3)"
+        [post]="post"
+        [showImage]="true"
+        [showSubtitle]="type === 'column'"
+        [showReadMore]="true"
+        [textAlignReadMore]="'left'"
+        [subtitleTruncate]="140"
+      ></app-post-item>
+    </li>
+  </ul>
+</div>

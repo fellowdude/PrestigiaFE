@@ -1,0 +1,62 @@
+// Colors
+$dark: #261f27;
+$dark-1: hsla(292, 11%, 16%, 1);
+$dark-2: hsla(292, 11%, 30%, 1);
+$white: #fff;
+$gray: #666d6b;
+$gray-1: #cdd3d2;
+$gray-2: hsl(0, 0%, 85%);
+$red: red;
+
+$yellow: #f2cb07;
+
+// Screen Size Definition
+
+//small
+$screen-sm-min: 576px;
+//medium
+$screen-md-min: 768px;
+//large
+$screen-lg-min: 1281px;
+//extra-large
+$screen-xl-min: 1200px;
+
+// Spacing sizes
+
+$s-xxl: 3rem;
+$s-xl: 2rem;
+$s-lg: 1.5rem;
+$s-md: 1rem;
+$s-sm: 0.8rem;
+$s-xs: 0.5rem;
+$s-xxs: 0.2rem;
+
+$s-array: 'xxl' $s-xxl, 'xl' $s-xl, 'lg' $s-lg, 'md' $s-md, 'sm' $s-sm;
+
+// Text sizes
+
+$txt-jumbo: 4.2rem;
+$txt-xxxl: 4.5rem;
+$txt-xxl: 4.3rem;
+$txt-xl: 3rem;
+$txt-lg: 2rem;
+$txt-md: 1.125rem;
+$txt-sm: 0.875rem;
+$txt-xs: 0.75rem;
+$txt-xxs: 0.625rem;
+
+$img-ratio-16-9: 56%;
+
+$card-gap: $s-lg;
+$card-parent-gap: $s-xl;
+
+// Header
+$menu-height: 2rem;
+$menu-sidebar-width: 15rem;
+
+// Post-hero
+$txt-xl-subtitle: 2rem;
+
+// General
+$page-max-width: 70rem;
+$page-max-width-extra: 80rem;

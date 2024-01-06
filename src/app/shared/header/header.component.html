@@ -1,0 +1,85 @@
+<div
+  class=" menu" [class.show]="showSidebarMenu" [class.expand-1]="menuExpandFrame1" [class.expand-2]="menuExpandFrame2"
+  [class.expand-3]="menuExpandFrame3">
+  <div class="contain">
+    <div class="menu-burger navbar-icon" (click)="toggleSidebarMenu(!showSidebarMenu)">
+      <img width="24" height="24" src="./assets/burger.svg" />
+      <span>{{ showSidebarMenu ? 'CERRAR' : 'MENÚ' }}</span>
+    </div>
+    <div class="menu-logo">
+      <a [routerLink]="['/']">
+        <img width="auto" height="36" src="./assets/white-logo.svg" />
+      </a>
+    </div>
+    <div class="navbar-icon">
+      <img (click)="toggleSearch()" width="24" height="24" src="./assets/search.svg" />
+      <div [class.show-search]="showSearchInput" class="navbar-search-input search-input">
+        <app-search-input></app-search-input>
+      </div>
+    </div>
+  </div>
+  <ul class="menu-sidebar">
+    <a [routerLink]="['/']" (click)="toggleSidebarMenu(false)">
+      <li>
+        <span>
+          INICIO
+        </span>
+      </li>
+    </a>
+    <a *ngFor="let section of sections" [routerLink]="['/' + section.friendlyUrl]" (click)="toggleSidebarMenu(false)">
+      <li>
+        <span>
+          {{ section.name }}
+        </span>
+      </li>
+    </a>
+  </ul>
+</div>
+<header #header class="contain">
+  <!-- #region Mobile elements -->
+  <div class="header-mobile mobile-logo">
+    <div class="icon" (click)="toggleSidebarMenu(true)">
+      <img width="24" height="24" src="./assets/burger.svg" />
+    </div>
+    <div>
+      <a [routerLink]="['/']">
+        <img class="img-black" width="auto" height="48" src="./assets/header-logo.png" />
+      </a>
+    </div>
+    <div class="icon icon-search">
+      <img (click)="toggleSearch()" width="24" height="24" src="./assets/search.svg" />
+      <div [class.show-search]="showSearchInput" class="navbar-search-input search-input">
+        <app-search-input></app-search-input>
+      </div>
+    </div>
+  </div>
+  <div (click)="toggleSidebarMenu(false)" [class.mobile-hidden]="!showSidebarMenu" class="header-mobile mobile-overlay">
+  </div>
+  <div (click)="toggleSidebarMenu(false)" [class.mobile-hidden]="!showSidebarMenu"
+    class="header-mobile icon icon-close">
+    <img width="24" height="24" src="./assets/close.svg" />
+  </div>
+
+  <div class="logo">
+    <a [routerLink]="['/']">
+      <img #navbarLocationReference class="img-black" width="300" height="auto" src="./assets/header-logo.png" />
+    </a>
+  </div>
+  <div class="navbar-wrapper">
+    <ul [class.mobile-hidden]="!showSidebarMenu" class="navbar txt--bold">
+      <li class="navbar-item search-input">
+        <app-search-input></app-search-input>
+      </li>
+      <ng-container *ngFor="let section of sections; let i = index">
+        <a [routerLink]="['/' + section.friendlyUrl]" routerLinkActive="selected" (click)="toggleSidebarMenu(false)">
+          <li class="navbar-item" [class.header-mobile]="i >= 6">
+            <span>
+              {{ section.name }}
+            </span>
+          </li>
+        </a>
+        <div *ngIf="i === 3" class="navbar-break"></div>
+      </ng-container>
+    </ul>
+  </div>
+</header>

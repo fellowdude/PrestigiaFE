@@ -1,0 +1,41 @@
+<article class="card">
+  <header *ngIf="showImage" class="card-header">
+    <div class="img-content">
+      <a [routerLink]="['/' + post.friendlyUrlSection, post.friendlyUrl]">
+        <img
+          class="img-display"
+          [class.img-top]="inSwiper"
+          defaultImage="./assets/placeholder.svg"
+          [lazyLoad]="post.imageUrl"
+        />
+      </a>
+    </div>
+  </header>
+  <div class="card-body">
+    <h2 class="title txt--clip--2">
+      <a [routerLink]="['/' + post.friendlyUrlSection, post.friendlyUrl]">
+        {{ post.title }}
+      </a>
+    </h2>
+    <p
+      *ngIf="showSubtitle && post.subtitle"
+      class="subtitle description txt--clip--3"
+      [innerHtml]="post.subtitle | stripHtml | sanitizeHtml"
+    ></p>
+    <p *ngIf="showDate && post.createdDate" class="subtitle date">
+      <img class="icon-clock" width="12" height="12" src="./assets/clock.svg" />
+      <span>{{ post.createdDate | date: 'LLLL d, yyyy' }}</span>
+    </p>
+    <p
+      *ngIf="showReadMore"
+      class="read-more"
+      [style.text-align]="textAlignReadMore"
+    >
+      <a [routerLink]="['/' + post.friendlyUrlSection, post.friendlyUrl]">
+        <span>
+          Leer más
+        </span>
+      </a>
+    </p>
+  </div>
+</article>

@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <ng-container *ngIf="cptPolitic">
+    <h2>{{ cptPolitic.contenido_titulo.value }}</h2>
+    <p
+      class="static-content"
+      [innerHTML]="sanitizeHtml(cptPolitic.contenido_texto.value)"
+    ></p>
+  </ng-container>
+  <div *ngIf="loading">
+    <app-loader></app-loader>
+  </div>
+</div>

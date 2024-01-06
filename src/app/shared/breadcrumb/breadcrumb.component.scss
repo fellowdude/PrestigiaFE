@@ -1,0 +1,18 @@
+@import 'src/styles/variables';
+.breadcrumb {
+  display: flex;
+  flex-flow: row wrap;
+  text-transform: uppercase;
+
+  .breadcrumb-item {
+    padding-top: $s-sm;
+    padding-bottom: $s-sm;
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: '/';
+    padding-left: $s-sm;
+    padding-right: $s-sm;
+    font-size: $txt-xs;
+  }
+}

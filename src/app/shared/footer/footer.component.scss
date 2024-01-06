@@ -1,0 +1,157 @@
+@import '~src/styles/variables';
+
+footer {
+  background-color: $dark;
+  color: $white;
+  padding-top: $s-sm;
+  padding-bottom: $s-sm;
+  margin-top: $s-xxl;
+
+  .logo div {
+    text-align: center;
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+  .grid-wrapper > .grid-parent {
+    margin-bottom: $s-md;
+    align-items: center;
+  }
+  .about {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    overflow: hidden;
+
+    .about-item {
+      text-align: center;
+      .about-head {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      /*ul > li {
+        padding: $s-xs $s-sm;
+      }*/
+
+      .logo-prestigia{
+        width: 300px;
+      }
+      .logo-scotia{
+        width: 225px;
+        padding-top: 1rem;
+      }
+    }
+
+    .claim {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-size: $txt-md;
+      div {
+        display: flex;
+        max-width: 15rem;
+        align-items: center;
+        padding: $s-xs $s-md;
+        border: 2px solid $white;
+
+        img {
+          padding-right: $s-md;
+        }
+      }
+    }
+  }
+  .footer-extra {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    border-top: 2px solid $white;
+    padding-top: $s-xs;
+    justify-content: center;
+    .prestigia,
+    .sonr,
+    .handel {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-end;
+      justify-content: center;
+      span {
+        white-space: nowrap;
+      }
+      img {
+        height: 1.5rem;
+        width: auto;
+      }
+    }
+  }
+}
+
+/* Larger than tablet */
+@media (min-width: 1281px) {
+  footer {
+    .grid-parent {
+      text-align: left;
+      flex-flow: row wrap;
+
+      .grid-child {
+        flex-grow: 0;
+        flex-basis: 100%;
+      }
+
+      .grid-child.logo {
+        .logo-prestigia{
+          max-width: 300px;
+        }
+        .logo-scotia{
+          max-width: 225px;
+          padding-top: 1rem;
+        }
+      }
+    }
+    .claim {
+      margin-left: auto;
+      div {
+        align-items: flex-end;
+      }
+    }
+    .footer-extra {
+      flex-flow: column wrap;
+    }
+  }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+  footer {
+    .grid-wrapper > .grid-parent {
+      .grid-child.logo {
+        flex-basis: 33.3%;
+        div {
+          margin-left: 0;
+          margin-right: 4rem;
+        }
+      }
+      .grid-child {
+        flex-basis: 33.3%;
+        padding-right: 0;
+        padding-bottom: 1rem;
+      }
+    }
+  }
+  .footer-extra{
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    justify-content: space-between !important;
+    /*.handel,
+    .sonr,
+    .prestigia{
+      flex-basis: 33.3%;
+    }*/
+  }
+}

@@ -1,0 +1,306 @@
+@import 'styles/_fonts';
+@import 'styles/_variables';
+@import 'styles/_reset';
+@import 'styles/_swiper';
+@import 'styles/_media';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  min-height: 100vh;
+  font-family: 'swz';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: $dark;
+  background-color: $white;
+}
+::selection {
+  background-color: $yellow;
+}
+.col-6 {
+  max-width: 50%;
+  flex-basis: 50%;
+}
+.col-12 {
+  max-width: 100%;
+  flex-basis: 100%;
+}
+.txt {
+  // Txt sizes
+  // TODO refactor this
+  &--xxxl {
+    font-size: $txt-xxxl;
+  }
+
+  &--xxl {
+    font-size: $txt-xxl;
+  }
+
+  &--xl {
+    font-size: $txt-xl;
+  }
+
+  &--lg {
+    font-size: $txt-lg;
+  }
+
+  &--md {
+    font-size: $txt-md;
+  }
+
+  &--sm {
+    font-size: $txt-sm;
+  }
+
+  &--xs {
+    font-size: $txt-xs;
+  }
+  &--xxs {
+    font-size: $txt-xxs;
+  }
+
+  // Txt utils
+  &--bold {
+    font-weight: bold;
+  }
+
+  &--regular {
+    font-weight: 400;
+  }
+
+  &--light {
+    font-weight: 200;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  @for $i from 1 through 5 {
+    &--clip--#{$i} {
+      display: -webkit-box;
+      -webkit-line-clamp: #{$i};
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}
+
+.gutter--horizontal {
+  > :not(:last-child) {
+    margin-right: $s-lg;
+  }
+
+  &--lg > :not(:last-child) {
+    margin-right: $s-xxl;
+  }
+}
+
+.gutter--vertical {
+  &--sm > :not(:last-child) {
+    margin-bottom: $s-md;
+  }
+  > :not(:last-child) {
+    margin-bottom: $s-xl;
+  }
+  &--lg > :not(:last-child) {
+    margin-bottom: $s-xxl;
+  }
+}
+
+.border-radius {
+  border-radius: 50%;
+
+  &--xxs {
+    border-radius: 0.2rem;
+  }
+
+  &--xs {
+    border-radius: 0.5rem;
+  }
+
+  &--md {
+    border-radius: 1rem;
+  }
+}
+
+.card {
+  @extend .gutter--vertical--sm;
+  display: flex;
+  flex-flow: column;
+}
+
+a:hover {
+  color: $dark-2;
+}
+
+.padding--horizontal--mobile {
+  padding-left: $s-md;
+  padding-right: $s-md;
+}
+
+.img-content {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-top: $img-ratio-16-9;
+  background-color: #010101;
+
+  .img-display {
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+    vertical-align: top;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: initial;
+    &.img-top {
+      object-position: top;
+    }
+    &.ng-lazyloaded {
+      opacity: 0.8;
+    }
+  }
+}
+
+.img-display {
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+  &.ng-lazyloaded {
+    opacity: 1;
+  }
+}
+
+.header {
+  font-family: tt10;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  &::after {
+    content: '';
+    display: block;
+    width: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: 2px;
+    background-color: $dark;
+    margin-top: $s-xs;
+  }
+}
+.header--sm {
+  font-size: $txt-lg;
+  font-weight: lighter;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $dark;
+    margin-top: $s-xs;
+  }
+}
+.header--xs {
+  font-size: $txt-sm;
+  font-weight: bolder;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.clear {
+  clear: both;
+}
+
+@each $s-txt, $s-size in $s-array {
+  .grid-wrapper.grid-#{$s-txt} {
+    overflow: hidden;
+    .grid-parent {
+      margin-right: -$s-size;
+      margin-bottom: -$s-size;
+      .grid-child {
+        padding-right: $s-size;
+        padding-bottom: $s-size;
+      }
+    }
+  }
+}
+
+.separator-top {
+  border-top: 1px solid $gray-2;
+  padding-top: $s-lg;
+}
+.separator-bottom {
+  border-bottom: 1px solid $gray-2;
+  padding-bottom: $s-lg;
+}
+
+.post-hero-subtitle,
+.post-hero-subtitle * {
+  line-height: 1.4;
+}
+
+.detail-html {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: tt9;
+  }
+}
+
+.static-content {
+  margin-top: 20px;
+}
+
+// Media Queries
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {
+}
+
+/* Larger than tablet */
+@media (min-width: 1281px) {
+  .contain {
+    width: 90%;
+    max-width: $page-max-width;
+    margin: auto;
+  }
+  .padding--horizontal--mobile {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+  .content-section {
+    float: left;
+    width: calc(75% - 3rem);
+    margin-right: 3rem;
+  }
+
+  .content-aside {
+    float: right;
+    width: 25%;
+  }
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {
+}

@@ -1,0 +1,53 @@
+<main class="gutter--vertical--lg">
+  <header *ngIf="homeLoaded && postCover">
+    <app-post-hero [post]="postCover" [type]="'inline'"></app-post-hero>
+  </header>
+  <div
+    class="separator-top contain gutter--vertical--lg padding--horizontal--mobile"
+  >
+    <app-loader *ngIf="!homeLoaded && !homeError.status"></app-loader>
+    <app-error-reload
+      *ngIf="homeError.status"
+      (onReload)="homeError.reload()"
+    ></app-error-reload>
+    <div *ngIf="!homeLoaded && !homeError.status" class="placeholder">
+    </div>
+    <div *ngIf="homeLoaded" class="gutter--vertical--lg content-section">
+      <section class="gutter--vertical most-seen">
+        <app-post-three [type]="'mosaic'" [posts]="postsMostSeen">
+        </app-post-three>
+        <swiper
+          class="swiper-container"
+          [config]="swiperConfig"
+          [index]="postMostSeenIndex$ | async"
+          (indexChange)="postMostSeenIndexChanged($event)"
+        >
+          <div *ngFor="let post of postsMostSeen" class="swiper-slide">
+            <app-post-item
+              [showImage]="true"
+              [showSubtitle]="false"
+              [showDate]="false"
+              [post]="post"
+              [inSwiper]="true"
+            ></app-post-item>
+          </div>
+        </swiper>
+        <app-pagination></app-pagination>
+      </section>
+      <section class="gutter--vertical" *ngFor="let section of sections">
+        <h1 class="header">
+          <a [routerLink]="['/' + section.friendlyUrl]">{{ section.name }}</a>
+        </h1>
+        <app-post-three
+          [type]="section.type"
+          [posts]="section.posts"
+          [invert]="section.invert"
+        >
+        </app-post-three>
+      </section>
+    </div>
+    <aside class="content-aside">
+      <app-blocks [amount]="10"></app-blocks>
+    </aside>
+  </div>
+</main>

@@ -1,0 +1,106 @@
+@import '~src/styles/variables';
+
+.wrapper-form {
+  width: 90%;
+  margin: auto;
+  display: block;
+  max-width: 70rem;
+  padding-top: 5rem;
+}
+
+.row {
+  display: flex;
+}
+h2 {
+  font-family: baubodn;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.col-6 {
+  width: 50%;
+  flex-basis: 50%;
+  max-width: 50%;
+  display: inline-block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: baubodn;
+  input {
+    border: 1px solid #d9d9d9;
+    width: 95%;
+    padding: 0.5rem 0.8rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  textarea {
+    border: 1px solid #d9d9d9;
+    width: 95%;
+    padding: 0.5rem 0.8rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  select {
+    border: 1px solid #d9d9d9;
+    width: 95%;
+    padding: 0.5rem 0.8rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+}
+.col-12 {
+  width: 100%;
+  flex-basis: 100%;
+  max-width: 100%;
+  display: inline-block;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: baubodn;
+
+  input {
+    width: 95%;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #d9d9d9;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  textarea {
+    width: 95%;
+    border: 1px solid #d9d9d9;
+    padding: 0.5rem 0.8rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  select {
+    border: 1px solid #d9d9d9;
+    width: 95%;
+    padding: 0.5rem 0.8rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+label {
+  font-size: 19px;
+}
+
+.button-submit {
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 1rem 1.5rem;
+  background-color: black;
+  text-transform: uppercase;
+  font-family: tt10;
+}
+
+input[type='number'] {
+  text-align: left;
+}

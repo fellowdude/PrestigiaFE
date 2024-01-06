@@ -1,0 +1,22 @@
+@import '~src/styles/variables';
+
+/* Larger than tablet */
+@media (min-width: 1000px) {
+  div {
+    > footer {
+      width: 100%;
+      ul {
+        display: flex;
+        flex-flow: row nowrap;
+
+        li {
+          flex: 1;
+          max-width: 33.3%;
+        }
+        li + li {
+          margin-left: $s-xl;
+        }
+      }
+    }
+  }
+}

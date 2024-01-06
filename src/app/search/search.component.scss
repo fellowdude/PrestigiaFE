@@ -1,0 +1,18 @@
+@import 'src/styles/variables';
+.searchbar {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  background-color: $dark;
+  max-width: 10rem;
+  button,
+  input {
+    height: 2.5rem;
+  }
+  button > img {
+    filter: invert(1);
+  }
+  input {
+    flex-grow: 1;
+  }
+}

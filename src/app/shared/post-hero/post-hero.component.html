@@ -1,0 +1,60 @@
+<article
+  *ngIf="type === 'stacked'"
+  class="post-hero post-hero-stacked gutter--vertical"
+>
+  <h1 class="post-hero-title txt--clip--1">
+    {{ post.title }}
+  </h1>
+  <div class="img-content">
+    <img
+      class="img-display"
+      defaultImage="./assets/placeholder.svg"
+      [lazyLoad]="post.imageUrl"
+    />
+  </div>
+  <p *ngIf="post.author" class="post-hero-author">
+    <img class="icon-user" width="12" height="12" src="./assets/user.svg" />
+    <span>{{ post.author!.name }}</span>
+  </p>
+  <h3
+    class="post-hero-subtitle"
+    [innerHtml]="post.subtitle | sanitizeHtml"
+  ></h3>
+</article>
+
+<article
+  *ngIf="type === 'inline' || type === 'inline-small'"
+  class="post-hero post-hero-inline gutter--vertical"
+  [ngClass]="type"
+>
+  <div class="img-content">
+    <a [routerLink]="['/' + post.friendlyUrlSection, post.friendlyUrl]">
+      <img
+        class="img-display"
+        defaultImage="./assets/placeholder.svg"
+        [lazyLoad]="post.imageUrl"
+      />
+    </a>
+  </div>
+  <header
+    #heroHeader
+    class="contain gutter--vertical--sm padding--horizontal--mobile post-hero-header"
+  >
+    <h1 class="post-hero-title txt--clip--1" [ngClass]="type == 'inline' ? 'title-main-post' : ''">
+      <a [routerLink]="['/' + post.friendlyUrlSection, post.friendlyUrl]">
+        {{ post.title }}
+      </a>
+    </h1>
+    <h3
+      class="post-hero-subtitle txt--clip--3"
+      [innerHtml]="post.subtitle | stripHtml | sanitizeHtml"
+    ></h3>
+    <p class="read-more">
+      <a [routerLink]="['/' + post.friendlyUrlSection, post.friendlyUrl]">
+        <span>
+          Leer más
+        </span>
+      </a>
+    </p>
+  </header>
+</article>

@@ -1,0 +1,34 @@
+@import '~src/styles/variables';
+
+section + section {
+  padding-top: $s-lg;
+  border-top: 1px solid $gray-2;
+}
+.most-seen {
+  app-post-three {
+    display: none;
+  }
+
+  app-pagination {
+    display: block;
+  }
+}
+
+.placeholder {
+  height: 100vh;
+}
+
+@media (min-width: 1281px) {
+  main > header {
+    margin-bottom: 0;
+  }
+  .most-seen {
+    app-pagination,
+    swiper {
+      display: none;
+    }
+    app-post-three {
+      display: block;
+    }
+  }
+}

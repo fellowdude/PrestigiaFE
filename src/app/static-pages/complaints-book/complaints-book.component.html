@@ -1,0 +1,90 @@
+<div class="wrapper-form" *ngIf="cptBook">
+  <h2>{{ cptBook.contenido_titulo.value }}</h2>
+  <form
+    [formGroup]="contactForm"
+    *ngIf="contactForm"
+    class="ps-form--contact"
+    action="do_action"
+    method="post"
+  >
+    <ng-container
+      *ngFor="let control of cptBook.contenido_libro_de_reclamaciones.value"
+    >
+      <div class="col-6" [ngClass]="{ 'col-12': control.size === 100 }">
+        <label *ngIf="control.type != 'instruction'"
+          >{{ control.name }} <sup>*</sup></label
+        >
+        <h4 class="sub-title-form" *ngIf="control.type === 'instruction'">
+          {{ control.name }}
+        </h4>
+        <ng-container *ngIf="control.type === 'text'">
+          <input
+            [formControlName]="control.field"
+            class="form-control"
+            type="text"
+            *ngIf="control.type == 'text' && control.sub_type == 'text'"
+            placeholder=""
+            required
+          />
+          <input
+            [formControlName]="control.field"
+            class="form-control"
+            type="text"
+            *ngIf="control.type == 'text' && control.sub_type == 'password'"
+            mdbInput
+            mdbValidate
+          />
+          <input
+            [formControlName]="control.field"
+            class="form-control"
+            type="email"
+            *ngIf="control.type == 'text' && control.sub_type == 'email'"
+            mdbInput
+            mdbValidate
+          />
+          <input
+            [formControlName]="control.field"
+            class="form-control"
+            type="number"
+            *ngIf="control.type == 'text' && control.sub_type == 'number'"
+            mdbInput
+            mdbValidate
+          />
+        </ng-container>
+        <textarea
+          *ngIf="control.type === 'text-area'"
+          [formControlName]="control.field"
+          class="form-control"
+          rows="7"
+          required
+        >
+        </textarea>
+        <select
+          class="form-control"
+          *ngIf="control.type === 'list'"
+          [formControlName]="control.field"
+        >
+          <option
+            class="form-control"
+            *ngFor="let option of control.list"
+            [value]="option"
+            >{{ option }}</option
+          >
+        </select>
+      </div>
+    </ng-container>
+    <div class="form-group submit">
+      <button class="button-submit" (click)="sendForm()" [disabled]="loading">
+        Enviar
+      </button>
+      <p *ngIf="showErrorMessage">Por favor, ingrese todos los campos.</p>
+      <p *ngIf="showSuccessMessage">
+        Se ha enviado el reclamo, pronto nos contactaremos con usted.
+      </p>
+      <p *ngIf="!showErrorMessage && !showSuccessMessage">&nbsp;</p>
+    </div>
+  </form>
+</div>
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>

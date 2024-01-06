@@ -1,0 +1,51 @@
+@import 'src/styles/variables';
+
+.block {
+  margin: auto;
+
+  &.banner {
+    padding-top: $s-md;
+    padding-bottom: $s-md;
+
+    .block-item {
+      height: 6rem;
+
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
+
+  &.ad {
+    max-width: 40rem;
+    .block-item img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+.block-item {
+  text-align: center;
+  height: 100%;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+.hidden-mobile {
+  display: none;
+}
+.hidden-desktop {
+  display: block;
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+  .hidden-mobile {
+    display: block;
+  }
+  .hidden-desktop {
+    display: none;
+  }
+}

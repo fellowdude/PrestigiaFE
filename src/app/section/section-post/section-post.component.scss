@@ -1,0 +1,68 @@
+@import 'src/styles/variables';
+header {
+  app-post-hero {
+    display: block;
+  }
+
+  .separator-bottom {
+    padding-bottom: $s-xxl;
+  }
+}
+.post-detail-date {
+  font-weight: lighter;
+  text-transform: capitalize;
+  margin-bottom: $s-md;
+
+  > * {
+    vertical-align: middle;
+  }
+  .icon-clock {
+    margin-right: 0.2rem;
+    width: $txt-md;
+    height: $txt-md;
+  }
+}
+.content-section {
+  padding-bottom: 6rem;
+  border-bottom: 1px solid $gray-2;
+}
+
+.post-detail {
+  width: 100%;
+  .detail-image {
+    text-align: center;
+    img {
+      transition: opacity 0.1s ease-in;
+      max-width: 100%;
+      height: auto;
+      margin: auto;
+    }
+  }
+
+  .detail-quote {
+    text-align: center;
+    padding: $s-md;
+    background-color: $gray-1;
+    font-size: $txt-xl;
+    font-family: baubodn;
+  }
+}
+
+@media (min-width: 1281px) {
+  footer {
+    width: 100%;
+    ul {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+
+      li {
+        flex: 1;
+        max-width: 33.3%;
+      }
+      li + li {
+        margin-left: $card-parent-gap;
+      }
+    }
+  }
+}

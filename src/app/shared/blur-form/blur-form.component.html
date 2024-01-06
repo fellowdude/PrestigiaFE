@@ -1,0 +1,48 @@
+<form [formGroup]="blurForm" (ngSubmit)="submitSearch()">
+  <div class="form-wrapper">
+    <div class="form-header">
+      <img src="./assets/popup-man.jpg" />
+    </div>
+    <div class="form-body gutter--vertical">
+      <app-logo></app-logo>
+      <p
+        [style.opacity]="blurForm.get('dni')?.invalid && submitted ? 0 : 1"
+        class="txt-flavor txt--center"
+      >
+        Disfrute de la versión <i><b>online</b></i> de nuestra revista, con lo
+        más selecto del panorama nacional e internacional.
+      </p>
+      <label
+        [class.invalid]="blurForm.get('dni')?.invalid && submitted"
+        for="dni-popup"
+      >
+        <input
+          id="dni-popup"
+          formControlName="dni"
+          placeholder=""
+          type="number"
+          #dni
+          autofocus
+        />
+        <span
+          class="placeholder"
+          [style.opacity]="blurForm.get('dni')?.value == null ? 1 : 0"
+        >
+          {{
+            submittedInvalid
+              ? 'Lo sentimos, no está suscrito a nuestra base de clientes.'
+              : 'Digite su Nº de DNI o CE'
+          }}
+        </span>
+      </label>
+      <div class="form-send">
+        <button type="submit" style="cursor: pointer;">
+          Ingresar
+        </button>
+      </div>
+      <div class="scotia-logo">
+        <img src="./assets/scotia-red-header-logo.svg" />
+      </div>
+    </div>
+  </div>
+</form>

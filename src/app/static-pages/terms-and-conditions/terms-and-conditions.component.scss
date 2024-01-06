@@ -1,0 +1,39 @@
+@import '~src/styles/variables';
+@import '~src/styles/media';
+
+.wrapper {
+  width: 90%;
+  margin: auto;
+  display: block;
+  max-width: 70rem;
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
+  @media (min-width: 1281px) {
+    padding-top: 5rem;
+  }
+
+  h2 {
+    font-family: baubodn;
+    font-weight: normal;
+    font-size: $txt-xl;
+    padding-bottom: 2rem;
+    text-align: left;
+    @media (min-width: 1281px) {
+      font-size: $txt-xxxl;
+    }
+  }
+}
+
+input[type='number'] {
+  text-align: left;
+}
+
+:host::ng-deep{
+  p{
+    font-size: 12pt;
+    font-weight: bold;
+    @media (min-width: 1281px) {
+      font-size: 14pt;
+    }
+  }
+}

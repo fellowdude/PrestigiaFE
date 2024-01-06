@@ -1,0 +1,42 @@
+<main>
+  <header *ngIf="postHeroLoaded && postHero !== undefined">
+    <app-post-hero [type]="'inline'" [post]="postHero"></app-post-hero>
+  </header>
+  <div
+    class="separator-top contain gutter--vertical padding--horizontal--mobile"
+  >
+    <app-error-reload
+      *ngIf="postsError.status"
+      (onReload)="postsError.reload()"
+    >
+    </app-error-reload>
+    <app-loader *ngIf="!postsLoaded && !postsError.status"></app-loader>
+    <section class="content-section gutter--vertical">
+      <section class="blocks">
+        <app-blocks [amount]="4"></app-blocks>
+      </section>
+      <app-post-list
+        *ngIf="postsLoaded"
+        [posts]="posts"
+        [type]="'paginated'"
+      ></app-post-list>
+      <app-pagination
+        [hidden]="!postsLoaded || posts.length === 0"
+      ></app-pagination>
+    </section>
+    <aside class="content-aside gutter--vertical--lg">
+      <section class="blocks">
+        <app-blocks [amount]="4"></app-blocks>
+      </section>
+      <section
+        *ngIf="sectionMore && sectionMore.length > 0"
+        class="more gutter--vertical"
+      >
+        <h4 class="header--sm">
+          {{ section.name }}
+        </h4>
+        <app-post-list [posts]="sectionMore" [type]="'aside'"></app-post-list>
+      </section>
+    </aside>
+  </div>
+</main>

@@ -1,0 +1,38 @@
+// Keep the footer at the bottom
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: filter 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.blur {
+  filter: blur(10px);
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+app-blur-form {
+  display: none;
+}
+.show-blur {
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  animation: fadein 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,65 @@
+@import '~src/styles/variables';
+app-post-list {
+  .post-list-wrapper {
+    overflow: hidden;
+
+    .post-list {
+      margin-right: -$card-gap;
+      margin-bottom: -$card-gap;
+      .post-item {
+        padding-bottom: $card-gap;
+        padding-right: $card-gap;
+      }
+    }
+  }
+
+  .post-list.aside {
+    flex-flow: column;
+
+    .card-body {
+      .title {
+        font-size: $txt-lg;
+      }
+    }
+  }
+
+  .post-item + .post-item {
+    padding-top: $card-gap;
+    border-top: 1px solid $gray-2;
+  }
+
+  @mixin card-row {
+    .card {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: stretch;
+
+      .card-header {
+        flex: 1 0 40%;
+        .img-content {
+          padding-top: 0;
+          padding-right: 100%;
+          height: 100%;
+        }
+      }
+      .card-body {
+        flex: 1 0 60%;
+      }
+
+      > :first-child {
+        margin-bottom: 0;
+        padding-right: $card-gap;
+      }
+    }
+  }
+
+  @media (min-width: 550px) {
+    .post-list:not(.aside) {
+      @include card-row;
+    }
+  }
+
+  /* Larger than desktop */
+  @media (min-width: 1000px) {
+  }
+}

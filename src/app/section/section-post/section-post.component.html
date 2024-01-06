@@ -1,0 +1,73 @@
+<main class="contain padding--horizontal--mobile">
+  <div *ngIf="postNotFound">
+    <h1>Este post no pudo ser encontrado.</h1>
+    <p>
+      El URL ingresado puede ser incorrecto o el post puede haber sido
+      eliminado.
+    </p>
+    <p>
+      Presione <a [routerLink]="['/']" class="txt--bold">aquí</a> para regresar
+      a la página principal.
+    </p>
+  </div>
+  <div *ngIf="!postLoaded && !postNotFound">
+    <app-loader></app-loader>
+  </div>
+  <div *ngIf="postLoaded" class="gutter--vertical">
+    <header class="gutter--vertical" *ngIf="post">
+      <app-post-hero
+        class="separator-top separator-bottom"
+        [post]="post"
+      ></app-post-hero>
+    </header>
+    <aside class="content-aside gutter--vertical">
+      <app-blocks [amount]="4"></app-blocks>
+    </aside>
+    <section class="content-section gutter--vertical">
+      <p class="post-detail-date">
+        <img
+          class="icon-clock"
+          width="24"
+          height="24"
+          src="./assets/clock.svg"
+        />
+        <span>{{ post.createdDate | date: 'LLLL d, yyyy' }}</span>
+      </p>
+      <div
+        *ngFor="let detail of post.details"
+        [ngSwitch]="detail.type"
+        class="post-detail"
+      >
+        <div
+          *ngSwitchCase="'text'"
+          [innerHtml]="detail.value | sanitizeHtml"
+          class="detail-html gutter--vertical"
+        ></div>
+        <div *ngSwitchCase="'image'" class="detail-image">
+          <img
+            class="img-display"
+            defaultImage="./assets/placeholder.svg"
+            [lazyLoad]="post.urlAttachment + detail.value"
+          />
+        </div>
+      </div>
+    </section>
+    <footer
+      *ngIf="postsRelated && postsRelated.length > 0"
+      class="clear gutter--vertical"
+    >
+      <h1 class="header">Le puede interesar</h1>
+      <ul class="gutter--vertical">
+        <li *ngFor="let post of postsRelated">
+          <app-post-item
+            [post]="post"
+            [showImage]="true"
+            [showSubtitle]="true"
+            [showReadMore]="true"
+            [textAlignReadMore]="'right'"
+          ></app-post-item>
+        </li>
+      </ul>
+    </footer>
+  </div>
+</main>

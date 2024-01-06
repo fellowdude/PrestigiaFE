@@ -1,0 +1,68 @@
+<div
+  [ngClass]="type"
+  class="block gutter--vertical hidden-mobile"
+  *ngIf="block$ | async as block"
+>
+  <ng-container *ngIf="block.ads.length > 0">
+    <div class="block-item" *ngFor="let ad of block.ads.slice(0, amount)">
+      <a [ngSwitch]="ad.type" [href]="ad.redirect" target="_blank">
+        <p *ngSwitchCase="'Text'">
+          {{ ad.value }}
+        </p>
+
+        <img *ngSwitchCase="'Image'" [src]="ad.value" />
+      </a>
+    </div>
+    <ng-container *ngIf="block.ads.length > amount">
+      <swiper class="block-slider swiper-container" [config]="swiperConfig">
+        <div
+          *ngFor="let ad of block.ads.slice(amount)"
+          class="block-item swiper-slide"
+        >
+          <a [ngSwitch]="ad.type" [href]="ad.redirect" target="_blank">
+            <p *ngSwitchCase="'Text'">
+              {{ ad.value }}
+            </p>
+
+            <img *ngSwitchCase="'Image'" [src]="ad.value" />
+          </a>
+        </div>
+      </swiper>
+    </ng-container>
+  </ng-container>
+</div>
+<!-- Mobile block -->
+<div
+  [ngClass]="type"
+  class="block gutter--vertical hidden-desktop"
+  *ngIf="blockMobile$ | async as block"
+>
+  <!-- <div *ngIf="block.ads.length > 0" class="block-item">
+    <a
+      [ngSwitch]="block.ads[0].type"
+      [href]="block.ads[0].redirect"
+      target="_blank"
+    >
+      <p *ngSwitchCase="'Text'">
+        {{ block.ads[0].value }}
+      </p>
+
+      <img *ngSwitchCase="'Image'" [src]="block.ads[0].value" />
+    </a>
+  </div> -->
+
+  <swiper
+    *ngIf="block.ads.length > 0"
+    class="block-slider swiper-container"
+    [config]="swiperConfig"
+  >
+    <div *ngFor="let ad of block.ads" class="block-item swiper-slide">
+      <a [ngSwitch]="ad.type" [href]="ad.redirect" target="_blank">
+        <p *ngSwitchCase="'Text'">
+          {{ ad.value }}
+        </p>
+        <img *ngSwitchCase="'Image'" [src]="ad.value" />
+      </a>
+    </div>
+  </swiper>
+</div>

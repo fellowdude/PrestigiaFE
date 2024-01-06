@@ -1,0 +1,25 @@
+@import 'src/styles/_variables';
+
+.separator-top {
+  margin-top: $s-lg;
+}
+
+.content-aside .blocks {
+  display: none;
+}
+
+@media (min-width: 1281px) {
+  .separator-top {
+    margin-top: 0;
+  }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+  .content-aside .blocks {
+    display: block;
+  }
+  .content-section .blocks {
+    display: none;
+  }
+}

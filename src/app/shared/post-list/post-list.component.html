@@ -1,0 +1,12 @@
+<div class="post-list-wrapper">
+  <ul [ngClass]="type" class="post-list">
+    <li *ngFor="let post of posts" class="post-item">
+      <app-post-item
+        [post]="post"
+        [showImage]="type === 'paginated' ? true : false"
+        [showSubtitle]="true"
+        [showDate]="type === 'paginated' ? true : false"
+      ></app-post-item>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,35 @@
+<ol class="pagination">
+  <li [hidden]="pageCurrent === 1" (click)="setPageTo(pageCurrent - 1)">
+    &#60;&#60; Prev
+  </li>
+  <li [hidden]="paginationShowDotsLeft" (click)="setPageTo(1)">
+    1
+  </li>
+  <li
+    class="pagination-dots"
+    [hidden]="paginationShowDotsLeft || pageCurrent - paginationOffset - 1 == 1"
+  >
+    ...
+  </li>
+  <li
+    *ngFor="let i of paginationPages"
+    (click)="setPageTo(i)"
+    [class.active]="i == pageCurrent"
+  >
+    {{ i }}
+  </li>
+  <li
+    class="pagination-dots"
+    [hidden]="
+      paginationShowDotsRight || pageCurrent + paginationOffset + 1 == pageCount
+    "
+  >
+    ...
+  </li>
+  <li [hidden]="paginationShowDotsRight" (click)="setPageTo(pageCount)">
+    {{ pageCount }}
+  </li>
+  <li [hidden]="pageCurrent === pageCount" (click)="setPageTo(pageCurrent + 1)">
+    Sig &#62;&#62;
+  </li>
+</ol>

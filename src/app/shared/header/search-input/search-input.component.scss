@@ -1,0 +1,10 @@
+@import '~src/styles/variables';
+
+input {
+  font-size: $txt-sm;
+  width: 100%;
+  border-radius: 0.2rem;
+}
+input::placeholder {
+  font-weight: bold;
+}

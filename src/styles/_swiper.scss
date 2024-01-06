@@ -1,0 +1,13 @@
+.swiper-container {
+  .swiper-slide {
+    overflow: hidden !important;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    opacity: 0 !important;
+  }
+  .swiper-wrapper {
+    transition-duration: 1s !important;
+    transition-timing-function: ease-out;
+  }
+}
